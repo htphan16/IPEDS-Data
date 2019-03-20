@@ -78,3 +78,12 @@ college.columns = columns = ["Index","Untid","Institution name", "State abbrevia
 
 college.tail()
 #len(college.columns)
+
+#convert all data type to float
+college = college.convert_objects(convert_numeric=True)
+
+#Correlation with heat map
+import seaborn as sns
+import matplotlib.pyplot as plt 
+plt.figure(figsize=(15,10))
+sns.heatmap(college[["Total current assets","Long term debt","Student-to-faculty ratio"]].corr(),annot=True,cmap='summer')
